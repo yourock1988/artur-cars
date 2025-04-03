@@ -17,8 +17,8 @@ export default {
   <div>
     <CarAdder @car-added="cars.push($event)" />
 
-    <CarsList :cars="cars" @car-deleted="cars = $event" />
+    <CarsList :cars="cars" @update-cars="cars = $event" />
 
-    <button>Очистить ВСЁ</button>
+    <button @click="cars = []">Очистить ВСЁ</button>
   </div>
 </template>

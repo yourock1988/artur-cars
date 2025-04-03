@@ -6,7 +6,7 @@ export default {
 
   props: ['cars'],
 
-  emits: ['car-deleted'],
+  emits: ['update-cars'],
 }
 </script>
 
@@ -18,7 +18,7 @@ export default {
       :car="car"
       @car-deleted="
         $emit(
-          'car-deleted',
+          'update-cars',
           cars.filter(c => c !== car)
         )
       "
