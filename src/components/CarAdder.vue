@@ -21,7 +21,8 @@ export default {
 
 <template>
   <div>
-    <input ref="elInput" :value="car" @input="car = $event.target.value" />
+    <input ref="elInput" v-model="car" />
+
     <button @click="handleClick">Добавить</button>
   </div>
 </template>

@@ -4,22 +4,28 @@ import CarItem from './CarItem.vue'
 export default {
   components: { CarItem },
 
-  props: ['cars'],
+  props: ['modelValue'],
 
-  emits: ['update-cars'],
+  emits: ['update:model-value'],
 }
 </script>
 
 <template>
   <ul>
     <CarItem
-      v-for="(car, idx) of cars"
+      v-for="(car, idx) of modelValue"
       :key="idx"
       :car="car"
+      @car-edited="
+        $emit(
+          'update:model-value',
+          modelValue.map(c => (c === car ? $event : c))
+        )
+      "
       @car-deleted="
         $emit(
-          'update-cars',
-          cars.filter(c => c !== car)
+          'update:model-value',
+          modelValue.filter(c => c !== car)
         )
       "
     />
